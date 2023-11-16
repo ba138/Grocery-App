@@ -1,6 +1,6 @@
 import 'package:citta_db/consts/theme_data.dart';
 import 'package:citta_db/provider/dark_theme_provider.dart';
-import 'package:citta_db/screens/home.dart';
+import 'package:citta_db/screens/btm_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: Styles.themeData(themeProvider.getDarkTheme, context),
-          home: const HomeScreen(),
+          home: const BottomBarScreen(),
         );
       }),
     );
