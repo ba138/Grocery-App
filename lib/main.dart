@@ -1,3 +1,4 @@
+import 'package:citta_db/consts/theme_data.dart';
 import 'package:citta_db/screens/home.dart';
 import 'package:flutter/material.dart';
 
@@ -10,12 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = true;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: Styles.themeData(isDark, context),
       home: const HomeScreen(),
     );
   }
