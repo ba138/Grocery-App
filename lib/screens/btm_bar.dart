@@ -4,7 +4,6 @@ import 'package:citta_db/screens/categrios.dart';
 import 'package:citta_db/screens/home.dart';
 import 'package:citta_db/screens/user.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
 
 class BottomBarScreen extends StatefulWidget {
@@ -16,11 +15,11 @@ class BottomBarScreen extends StatefulWidget {
 
 class _BottomBarScreenState extends State<BottomBarScreen> {
   int selectIndex = 0;
-  List pages = [
-    HomeScreen(),
-    CategriousScreen(),
-    CartScreen(),
-    UserScreen(),
+  final List<Map<String, dynamic>> pages = [
+    {"page": const HomeScreen(), "title": "Home Screen"},
+    {"page": const CategriousScreen(), "title": "Categrious Screen"},
+    {"page": const CartScreen(), "title": "Cart Screen"},
+    {"page": const UserScreen(), "title": "User Screen"},
   ];
   void selectedPage(int index) {
     setState(() {
@@ -33,7 +32,10 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
     final themeState = Provider.of<DarkThemeProvider>(context);
     bool isDark = themeState.getDarkTheme;
     return Scaffold(
-      body: pages[selectIndex],
+      // appBar: AppBar(
+      //   title: Text(pages[selectIndex]["title"]),
+      // ),
+      body: pages[selectIndex]["page"],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: themeState.getDarkTheme
             ? Theme.of(context).canvasColor
