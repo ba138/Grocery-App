@@ -12,6 +12,15 @@ class UserScreen extends StatefulWidget {
 }
 
 class _UserScreenState extends State<UserScreen> {
+  final TextEditingController addressController = TextEditingController(
+    text: "",
+  );
+  @override
+  void dispose() {
+    super.dispose();
+    addressController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final themeState = Provider.of<DarkThemeProvider>(context);
@@ -56,7 +65,26 @@ class _UserScreenState extends State<UserScreen> {
               ),
               _listTile(
                 icon: Icons.person_outline,
-                onTap: () {},
+                onTap: () async {
+                  Future.delayed(Duration.zero, () async {
+                    await showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: const Text("Update"),
+                          content: TextField(
+                            onChanged: (value) {},
+                            controller: addressController,
+                            maxLines: 5,
+                            decoration: const InputDecoration(
+                              hintText: "Your Address,",
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  });
+                },
                 title: "Address",
                 subTitle: "My Address",
                 color: color,
